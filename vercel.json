@@ -4,7 +4,7 @@
     {
       "src": "main.py",
       "use": "@vercel/python",
-      "config": { 
+      "config": {
         "maxLambdaSize": "15mb",
         "runtime": "python3.9"
       }
@@ -12,5 +12,26 @@
   ],
   "routes": [
     { "src": "/(.*)", "dest": "/main.py" }
-  ]
+  ],
+  "functions": {
+    "api/**": {
+      "maxDuration": 60,
+      "memory": 1024,
+      "excludeFiles": [
+        "**/node_modules/**",
+        "**/venv/**",
+        "**/__pycache__/**",
+        "**/*.py[cod]",
+        "**/*.so",
+        "**/.next/**",
+        "**/.cache/**",
+        "**/test/**",
+        "**/tests/**",
+        "**/sample_questions/**",
+        "**/photos/**",
+        "**/uploads/**"
+      ]
+    }
+  },
+  "buildCommand": "pip install -r requirements.txt"
 }
