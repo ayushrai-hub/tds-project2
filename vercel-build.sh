@@ -1,16 +1,17 @@
 #!/bin/bash
 
-# Update pip
-python -m pip install --upgrade pip
+# Create api directory if it doesn't exist
+mkdir -p api
+
+# Copy main Python files to api directory
+cp main.py api/
+cp gemini.py api/
+cp llm_parser.py api/
+cp task_engine.py api/
 
 # Install dependencies
+pip install --upgrade pip
 pip install -r requirements.txt
-
-# Install specific versions of dependencies
-pip install fastapi==0.116.1 uvicorn==0.35.0 python-multipart==0.0.20 python-dotenv==1.0.0 aiofiles==24.1.0
-
-# Install additional required packages
-pip install numpy==2.2.6 pandas==2.3.1 openai==1.99.1 google-generativeai==0.8.5 pydantic==2.11.7
 
 # Verify installation
 python -c "import fastapi, uvicorn; print(f'FastAPI version: {fastapi.__version__}')"
