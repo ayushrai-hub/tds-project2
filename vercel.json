@@ -1,12 +1,18 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "main.py",
-        "use": "@vercel/python"
-      }
-    ],
-    "routes": [
-      { "src": "/(.*)", "dest": "main.py" }
-    ]
-  }
+  "version": 2,
+  "builds": [
+    {
+      "src": "main.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "*.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/main.py" }
+  ],
+  "buildCommand": "chmod +x vercel-build.sh && ./vercel-build.sh",
+  "installCommand": "pip install -r requirements.txt"
+}
